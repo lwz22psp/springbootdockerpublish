@@ -24,8 +24,8 @@ docker image rm springboot/springbootdocker
 
 echo "build new image"
 #编译镜像
-mvn package docker:build
+mvn package docker:build -DskipTests
 
 echo "run new docker"
 #挂载镜像到新容器中
-docker run -d -p 8080:8080 --name springbootdocker springboot/springbootdocker
+docker run -d -p 8080:8080 --name springbootdocker  --network host springboot/springbootdocker 
